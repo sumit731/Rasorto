@@ -6,7 +6,7 @@ import List from "./pages/List/List"
 import Orders from "./pages/Orders/Orders"
 import { ToastContainer } from "react-toastify"
 const App = () => {
-  const url = "http://localhost:8000";
+  const url = "https://rasorto.onrender.com";
   return (
     <div>
       <Navbar/>
