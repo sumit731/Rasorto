@@ -23,7 +23,7 @@ const StoreContextProvider = (props) => {
 
         if (token) {
             try {
-                await axios.post(url+"/api/cart/add", { itemId }, { headers: { token } });
+                await axios.post("http://localhost:8000/api/cart/add", { itemId }, { headers: { token } });
             } catch (error) {
                 console.log(error);
                 alert("Something went wrong in addToCart");
@@ -35,7 +35,7 @@ const StoreContextProvider = (props) => {
     const removeFromCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if (token) {
-            await axios.post(url+"/api/cart/remove", { itemId }, { headers: { token } });
+            await axios.post("http://localhost:8000/api/cart/remove", { itemId }, { headers: { token } });
         }
     }
 
@@ -52,7 +52,7 @@ const StoreContextProvider = (props) => {
 
     const fetchFoodList = async () => {
         try {
-            const response = await axios.get(url + "/api/food/list");
+            const response = await axios.get("http://localhost:8000/api/food/list");
             setFoodList(response.data.data);
         }
         catch (error) {
@@ -62,7 +62,7 @@ const StoreContextProvider = (props) => {
     }
 
     const loadCartData = async (token) => {
-        const response = await axios.post(url + "/api/cart/get",{}, { headers: { token } });
+        const response = await axios.post("http://localhost:8000/api/cart/get",{}, { headers: { token } });
             console.log("loadCartData: ", response.data.cartData);
             setCartItems(response.data.cartData);
     }
